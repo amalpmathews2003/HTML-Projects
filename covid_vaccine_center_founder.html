@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Center Founder</title>
+      <style>
+            .myTable{
+                  font-family: Arial, Helvetica, sans-serif;
+                  border-collapse: collapse;
+                  width: 100%;
+            }
+            .my-th,.my-tr{
+                  border: 1px solid #ddd;
+                  padding: 8px;
+            }
+            .my-tr:nth-child(even){
+                  background-color: #f2f2f2;
+            }
+            .my-tr:hover{
+                  background-color: #ddd;
+            }     
+            .my-th{
+                  padding-top: 12px;
+                  padding-bottom: 12px;
+                  text-align: left;
+                  background-color: #04AA6D;
+                  color: white;
+                  padding-right: 10px;
+            }
+      </style>
+</head>
+<body>
+      <h1>Covid Vaccine Center Traker</h1>
+      <p id="demo"></p>
+      <p id="p1"></p>
+
+      <button onclick="getLocation()" >Find</button>
+</body>
+
+<script>
+      var map,marker="0";
+      var locations=[]
+      var myLocation;
+      function OpenMap(i){
+            document.getElementById("googleMap").style.display="block"
+            if(marker=="0")
+            {
+                  marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][0],locations[i][1])});
+                  marker.setMap(map);
+                  map.panTo( new google.maps.LatLng( locations[i][0],locations[i][1] ) );
+
+                  google.maps.event.addListener(marker,'click',function() {
+                        var pos = map.getZoom();
+                        map.setZoom(18);
+                        map.setCenter(marker.getPosition());
+                        });
+            }
+            else{
+                  marker.setPosition( new google.maps.LatLng(locations[i][0],locations[i][1]  ) );
+                  map.panTo( new google.maps.LatLng( locations[i][0],locations[i][1] ) );
+            }
+      }
+
+      //print()
+      async function print(){
+            let res=await fetch_api(myLocation[0],myLocation[1])
+            //console.log('aa')
+            //document.getElementById("p1").innerHTML=res
+            let list=JSON.parse(res)
+            //console.log(res)
+            centers=list.centers
+            var table=document.createElement("table");
+            x.setAttribute("class","myTable")
+            document.body.appendChild(x)
+            var headings=Object.keys(centers[0])
+            var heading=["Name","District","Location","Pincode","Map"]
+            var y=document.createElement("tr")
+            x.appendChild(y);
+            for(var i=0;i<heading.length;i++)
+            {
+                  var name=heading[i]
+
+                  var z=document.createElement("th")
+                  z.setAttribute("class","my-th")
+                  var t=document.createTextNode(name)
+                  z.appendChild(t)
+                  y.appendChild(z)
+                  
+            }
+            
+            for(var i=0;i<centers.length;i++)
+            {
+                  y=document.createElement("tr")
+                  y.setAttribute("class","my-tr")
+                  x.appendChild(y);
+
+                  for(var j=0;j<headings.length;j++)
+                  {
+                        if(headings[j]=="center_id" ||headings[j]=="state_name"||headings[j]=="block_name" )
+                              continue;
+                        if(headings[j]=="lat")
+                        {
+                              var z=document.createElement("button")
+                              z.setAttribute("value",i)
+                              z.setAttribute("onclick","OpenMap(this.value)")
+                              y.appendChild(z)
+                              z.appendChild(document.createTextNode("Map"))
+                              locations.push([centers[i][headings[j]],centers[i][headings[j+1]]])
+                              break;
+                        }
+                        var z=document.createElement("td")
+                        var t=document.createTextNode(centers[i][headings[j]])
+                        z.appendChild(t)
+                        y.appendChild(z)
+
+                       // console.log()
+                  }
+
+            }
+      }
+      
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+         //console.log(myLocation)
+      }
+      
+      function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+        myLocation=[position.coords.latitude,position.coords.longitude]
+      //  console.log(myLocation)
+      print()
+        //fetch_api(position.coords.latitude,position.coords.longitude)
+      }
+      async function fetch_api(latitude,longitude)
+      {     
+            let result=await fetch(`https://cdn-api.co-vin.in/api/v2/appointment/centers/public/findByLatLong?lat=${latitude}&long=${longitude}`)
+            return await result.text()
+      }
+      function myMap() {
+             
+            var x=document.createElement("div")
+            x.setAttribute("id","googleMap")
+            x.setAttribute("style","width:100%;height:400px;display:none")
+            document.body.appendChild(x)
+            var mapProp= {
+            center:new google.maps.LatLng(9.5991,76.5171),
+            zoom:16,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+
+            };
+            map = new google.maps.Map(x,mapProp);
+
+          
+
+
+            }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8u-tO86sDJxz1oInHPqgAE_f86WCLuFw&callback=myMap"></script>
+
+</html>
