@@ -1,4 +1,4 @@
 {
-      Name:
-      Desc:
+      Name:Hidden Search Box
+      Desc:Appear when clicked on widget
 }
