@@ -1,0 +1,29 @@
+.result-title{
+      margin-left: 30px;
+      margin-top: 20px;
+      font-size: 24px;
+}
+.result-title div{
+      margin-right: 10px;
+      margin-bottom: 30px;
+}
+
+#output{
+      float: left;
+      margin-left: 400px;
+      width: 500px;
+      height: 500px;
+      border: 1px groove grey;
+      padding: 10px;
+      overflow: scroll;
+}
+
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }
+
+.help{
+      margin-top: 40px;
+}
