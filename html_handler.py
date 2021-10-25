@@ -61,7 +61,7 @@ def new_html_folder(dir):
 
 parser = argparse.ArgumentParser()      
 
-parser.add_argument('--folder',help='create folder with given name')
+parser.add_argument('--folder',type=str,help='create folder with given name')
 args=parser.parse_args()
 if(args.folder):
       new_html_folder(args.folder)
