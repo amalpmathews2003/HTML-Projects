@@ -6,12 +6,13 @@ body{background-color:#161719;text-align:center;overflow-x:hidden;}
   position:relative;
   margin-top:100px;
 }
-
+/* class="collage_piece level_1" */
 .collage_piece{
   overflow:hidden;
   position:absolute;
   box-sizing:border-box;
   background-repeat: no-repeat;
+  transition: transform .2s;
 }
 
 .level_1{
@@ -26,7 +27,10 @@ body{background-color:#161719;text-align:center;overflow-x:hidden;}
   -moz-box-shadow: 0px 0px 16px 6px rgba(0,0,0,0.24);
   box-shadow: 0px 0px 16px 6px rgba(0,0,0,0.24);
 }
-
+.collage_piece.level_1:hover,.collage_piece.level_2:hover{
+      cursor: pointer;
+      transform: scale(1.5)
+}
 .link{
   color:grey;
   display:inline-block;

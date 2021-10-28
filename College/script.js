@@ -52,29 +52,29 @@ function ImageCollage(defaults)
       console.log(containerStyle.marginLeft, containerStyle.marginTop);
     }
   
-  window.addEventListener("mousemove", function(e){
-    var pieces = container.querySelectorAll(".collage_piece");
-    var xpos, ypos, mouseX, mouseY, levelNum, off;
+//   window.addEventListener("mousemove", function(e){
+//     var pieces = container.querySelectorAll(".collage_piece");
+//     var xpos, ypos, mouseX, mouseY, levelNum, off;
     
     
-    if (!mie) {
-        mouseX = e.pageX; 
-        mouseY = e.pageY;
-    }
-    else {
-        mouseX = event.clientX + document.body.scrollLeft;
-        mouseY = event.clientY + document.body.scrollTop;
-    }
+//     if (!mie) {
+//         mouseX = e.pageX; 
+//         mouseY = e.pageY;
+//     }
+//     else {
+//         mouseX = event.clientX + document.body.scrollLeft;
+//         mouseY = event.clientY + document.body.scrollTop;
+//     }
     
-    for (var p=0, l=pieces.length; p < l ; p++)
-      {
-        levelNum = pieces[p].dataset.level;
-        off = pieces[p].dataset.offset;
-        xpos = ( -mouseX/2 + containerWidth/2) / (off - levelNum);
-        ypos = ( -mouseY/2 + containerHeight/2) / (off - levelNum);
-        TweenMax.set(pieces[p],  {x:xpos, y:ypos});
-      }
-  })
+//     for (var p=0, l=pieces.length; p < l ; p++)
+//       {
+//         levelNum = pieces[p].dataset.level;
+//         off = pieces[p].dataset.offset;
+//         xpos = ( -mouseX/2 + containerWidth/2) / (off - levelNum);
+//         ypos = ( -mouseY/2 + containerHeight/2) / (off - levelNum);
+//         TweenMax.set(pieces[p],  {x:xpos, y:ypos});
+//       }
+//   })
   
   
   var mie = (navigator.appName == "Microsoft Internet Explorer") ? true : false;  
