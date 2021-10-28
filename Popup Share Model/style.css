@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&family=Ubuntu:wght@400;500;700&display=swap');
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins",sans-serif;
+}
+body{
+      background: #792ae8;
+}
+.view-model,.popup{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+}
+button{
+      font-weight: 500;
+      color: #fff;
+      background: #7d2ae8;
+      border: 2px solid transparent;
+      cursor: pointer; 
+}
+.view-model {
+      transform: translate(-50%,-50%) scale(1.6) ;
+      padding: 10px 25px;
+      font-size: 18px;
+      background: wheat;
+      color: #792ae8;
+}
+.popup{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 380px;
+      width: 100%;
+      transform: translate(-50%,-50%) scale(1.6);
+      opacity: 0;
+      pointer-events: none;
+}
+.show{
+      opacity: 1;
+      pointer-events: auto;  
+}
+.popup :is(header,.icons,.field){
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+}
+.popup header{   
+      padding-bottom: 15px;
+      border-bottom: 1px solid #ebedf9;
+}
+header span{
+      font-size: 21px;
+      font-weight: 600;
+}
+header .close,.icons a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+}
+header .close{
+      color: #878787;
+      height: 33px;
+      width: 33px;
+      background: #f2f3fb;
+      cursor: pointer;
+}
+.popup .content{
+      margin: 20px 0;
+}
+.content p{
+    font-size: 16px;  
+}
+.content .icons{
+     margin: 15px 0 20px 0;
+}
+.icons a{
+      height:40px;
+      width: 40px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s ease-in-out;
+}
+.icons a:nth-child(1){
+      color: #1877F2;
+      border-color: #b7d4fb;
+}
+.icons a:nth-child(2){
+      color: #46C1F6;
+      border-color: #b6e7fc;
+}
+.icons a:nth-child(3){
+      color: #e1306c;
+      border-color: #f5bccf;
+}
+.icons a:nth-child(4){
+      color: #25D366;
+      border-color: #bef4d2;
+}
+.icons a:nth-child(5){
+color: #0088cc;
+border-color: #b3e6ff;
+}
+.icons a:nth-child(1):hover{
+background: #1877F2;
+}
+.icons a:nth-child(2):hover{
+background: #46C1F6;
+}
+.icons a:nth-child(3):hover{
+background: #e1306c;
+}
+.icons a:nth-child(4):hover{
+background: #25D366;
+}
+.icons a:nth-child(5):hover{
+background: #0088cc;
+}
+.icons a:hover{
+      color: #fff;
+      border-color: transparent;
+}
+.icons a i{
+      transition: all 0.3s ease-in-out;
+}
+.icons a:hover i{
+      transform: scale(1.3);
+}
+.content .field{
+      margin: 12px 9 -5px 0;
+      height: 45px;
+      border: 1px solid #e1e1e1;
+      border-radius: 4px;
+      padding: 0 5px;
+}
+.field i{
+      width: 50px;
+      text-align: center;
+      font-size: 18px;
+}
+.field input{
+      border: none;
+      outline: none;
+      height: 100%;
+      width: 100%;
+      font-size: 15px;
+}
+.field button{
+      padding: 5px 18px;
+      color: #fff;
+      background: #7d2ae8;
+
+}
