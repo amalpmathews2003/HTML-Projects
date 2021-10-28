@@ -29,13 +29,8 @@ body{background-color:#161719;text-align:center;overflow-x:hidden;}
 }
 .collage_piece.level_1:hover,.collage_piece.level_2:hover{
       cursor: pointer;
-      transform: scale(1.5)
-}
-.link{
-  color:grey;
-  display:inline-block;
-  position:absolute;
-  bottom:30px;
-  right:30px;
-  text-decoration:none;
-}
+      transform: scale(1.5);
+      z-index: 100;
+
+}     
+
