@@ -1,4 +1,9 @@
-body{background-color:#161719;text-align:center;overflow-x:hidden;}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;500&display=swap');
+body{
+  background-color:#161719;
+  text-align:center;
+  overflow-x:hidden;
+}
 .collage_container{
   display:inline-block;
   width:800px;
@@ -6,7 +11,7 @@ body{background-color:#161719;text-align:center;overflow-x:hidden;}
   position:relative;
   margin-top:100px;
 }
-/* class="collage_piece level_1" */
+
 .collage_piece{
   overflow:hidden;
   position:absolute;
@@ -29,8 +34,34 @@ body{background-color:#161719;text-align:center;overflow-x:hidden;}
 }
 .collage_piece.level_1:hover,.collage_piece.level_2:hover{
       cursor: pointer;
-      transform: scale(1.5);
-      z-index: 100;
-
+      transform: scale(1.2);
+      z-index: 3;
 }     
 
+.quote-box{
+  color: aliceblue;
+  display: inline-block;
+  /* border: 5px solid blueviolet; */
+  padding: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-radius: 20px;
+  background: #7ac059;
+}
+.quote-box .quote{
+  font-size: 20px;
+  margin: 10px ;
+  font-weight: 500;
+}
+.quote-auther{
+  display: flex;
+}
+.quote-auther .name{
+  color: aquamarine;
+  margin: auto;
+}
+.quote-auther .college{
+  color: burlywood;
+  /* margin: 5px 5px 2px 5px; */
+  margin: auto;
+}
