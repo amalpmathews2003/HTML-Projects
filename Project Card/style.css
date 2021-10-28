@@ -1,0 +1,26 @@
+#title{
+      font-size: 1.5rem;
+      font-weight: 300;
+}
+.icon {
+      font-size: .9rem;
+      display: inline-flex;
+      background: #D8D8D8;
+      border-radius: 3px;
+      margin-right: 5px;
+      margin-bottom: 15px;
+
+}
+.icon span {
+      border-radius: 5px;
+      padding: 3px 5px;
+}
+.card a{
+      padding-right: 15px;
+}
+.gihub{
+      color: #739150;
+}
+.status {
+      color: #7699C2;
+}
