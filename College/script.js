@@ -87,13 +87,35 @@
 
 
 images=["images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg","images/17.jpg","images/18.jpg","images/19.jpg","images/20.jpg","images/21.jpg","images/22.jpg","images/23.jpg","images/24.jpg","images/25.jpg","images/26.jpg","images/27.jpg","images/28.jpg","images/29.jpg","images/30.jpg","images/31.jpg","images/32.jpg","images/33.jpg","images/34.jpg","images/35.jpg","images/36.jpg","images/37.jpg","images/38.jpg","images/39.jpg","images/40.jpg","images/41.jpg","images/42.jpg","images/43.jpg","images/44.jpg","images/45.jpg","images/46.jpg","images/47.jpg","images/48.jpg","images/49.jpg","images/50.jpg","images/51.jpg","images/52.jpg","images/53.jpg","images/54.jpg","images/55.jpg","images/56.jpg","images/57.jpg","images/58.jpg","images/59.jpg","images/60.jpg","images/61.jpg","images/62.jpg","images/63.jpg","images/64.jpg","images/65.jpg","images/66.jpg","images/67.jpg","images/68.jpg","images/69.jpg","images/70.jpg","images/71.jpg","images/72.jpg","images/73.jpg","images/74.jpg","images/75.jpg","images/76.jpg","images/77.jpg","images/78.jpg","images/79.jpg","images/80.jpg","images/81.jpg","images/82.jpg","images/83.jpg","images/84.jpg","images/85.jpg","images/86.jpg","images/87.jpg","images/88.jpg","images/89.jpg","images/90.jpg","images/91.jpg","images/92.jpg","images/93.jpg","images/94.jpg","images/95.jpg","images/96.jpg","images/97.jpg","images/98.jpg","images/99.jpg","images/100.jpg","images/101.jpg","images/102.jpg","images/103.jpg","images/104.jpg","images/105.jpg","images/106.jpg","images/107.jpg","images/108.jpg","images/109.jpg","images/110.jpg","images/111.jpg","images/112.jpg","images/113.jpg","images/114.jpg","images/115.jpg","images/116.jpg","images/117.jpg","images/118.jpg","images/119.jpg","images/120.jpg","images/121.jpg","images/122.jpg","images/123.jpg","images/124.jpg","images/125.jpg","images/126.jpg","images/127.jpg","images/128.jpg","images/129.jpg","images/130.jpg"]
+quotes=[
+  {
+    "quote":"Well Begun Is Half Done",
+    "name":"Dan Mani Binu",
+    "college":"NITC"
+  },
+  {
+    "quote":"When the going gets tough, the tough get going",
+    "name":"Aastha Mariam John",
+    "college":"NITC"
+  },
+  {
+    "quote":"When you get tired,learn to rest not to quit",
+    "name":"Amal P Mathews",
+    "college":"NIT Calicut"
+  },
+  {
+    "quote":"If you get happy with where you right now, the urge to grow slowly disappears",
+    "name":"Ben Thomas",
+    "college":"NITC"
+  }
+]
 var options = {
   container:document.querySelector(".collage_container"),
-  piecesNum:50,
+  piecesNum:30,
   imgSrc : images
 }
 
-var count=0,maxCount=131
+var count=0,maxCount=4
 function ImageCollage(defaults)
 {
   var container = defaults.container;
@@ -127,8 +149,9 @@ function ImageCollage(defaults)
         piece.style.height = getRandomInt(40, maxsizeY/2) + "px";
       }
      // console.log(defaults.imgSrc[count%maxCount])
-      piece.style.backgroundImage = "url("+defaults.imgSrc[count]+")";  
-      count++;    
+    //  piece.style.background="transperant"
+    
+      // piece.style.backgroundImage = "url("+defaults.imgSrc[]+")";  
       container.appendChild(piece);
       
       piece.dataset.offset = getRandomInt(strength, strength*2*piece.dataset.level);
@@ -136,10 +159,48 @@ function ImageCollage(defaults)
       piece.style.left = getRandomInt(0, containerWidth-piece.offsetWidth) + "px";
       piece.style.top = getRandomInt(0, containerHeight-piece.offsetHeight) + "px";
       piece.style.backgroundPosition = -(piece.offsetLeft) + "px " + (-piece.offsetTop) + "px";
+      var quotebox=document.createElement("div")
+      var quote=document.createElement("div")
+      var quoteAuther=document.createElement("div")
+      var quoteName=document.createElement("div")
+      var quoteCollege=document.createElement("div")
+      quotebox.className="quote-box"
+      quote.className="quote"
+      quoteAuther.className="quote-auther"
+      quoteName.className="name"
+      quoteCollege.className="college"
+      if(i < levelIndex){
+        quotebox.classList+=" level_1"
+      }
+      else{
+        quotebox.classList+=" level_2"
+      }
+      // quote.innerHTML="When you get tired,learn to rest not to quit"
+      // quoteName.innerHTML="Amal P Mathews"
+      // quoteCollege.innerHTML="NIT Calicut"
+      quote.innerHTML=quotes[count%maxCount]["quote"]
+      quoteName.innerHTML=quotes[count%maxCount]["name"]
+      quoteCollege.innerHTML=quotes[count%maxCount]["college"]
+      quoteAuther.appendChild(quoteName)
+      // quoteAuther.appendChild(quoteCollege)
+      addEvent(quotebox,quoteAuther)
+      quotebox.appendChild(quote)
+      quotebox.appendChild(quoteAuther)
       
+      piece.appendChild(quotebox)
+      
+      count++
       //console.log(containerStyle.marginLeft, containerStyle.marginTop);
     }
-  
+function addEvent (quotebox,quoteAuther) {
+  quotebox.addEventListener("mouseover",()=>{
+    quoteAuther.appendChild(quoteCollege)
+    
+  })
+  quotebox.addEventListener("mouseout",()=>{
+    quoteAuther.removeChild(quoteCollege)
+  })
+}
 //   window.addEventListener("mousemove", function(e){
 //     var pieces = container.querySelectorAll(".collage_piece");
 //     var xpos, ypos, mouseX, mouseY, levelNum, off;
