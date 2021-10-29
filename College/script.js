@@ -145,8 +145,8 @@ function ImageCollage(defaults)
       }else{
         piece.classList += " level_2";
         piece.dataset.level = 2;
-        piece.style.width = getRandomInt(40,  maxsizeX/2) + "px";
-        piece.style.height = getRandomInt(40, maxsizeY/2) + "px";
+        piece.style.width = getRandomInt(100,  maxsizeX) + "px";
+        piece.style.height = getRandomInt(100, maxsizeY) + "px";
       }
      // console.log(defaults.imgSrc[count%maxCount])
     //  piece.style.background="transperant"
@@ -166,6 +166,8 @@ function ImageCollage(defaults)
       var quoteName=document.createElement("div")
       var quoteCollege=document.createElement("div")
       quotebox.className="quote-box"
+    //   quotebox.style.width = getRandomInt(40,  maxsizeX/2) + "px";
+    // quotebox.style.height = getRandomInt(40, maxsizeY/2) + "px";
       quote.className="quote"
       quoteAuther.className="quote-auther"
       quoteName.className="name"
@@ -176,23 +178,17 @@ function ImageCollage(defaults)
       else{
         quotebox.classList+=" level_2"
       }
-      // quote.innerHTML="When you get tired,learn to rest not to quit"
-      // quoteName.innerHTML="Amal P Mathews"
-      // quoteCollege.innerHTML="NIT Calicut"
       quote.innerHTML=quotes[count%maxCount]["quote"]
       quoteName.innerHTML=quotes[count%maxCount]["name"]
       quoteCollege.innerHTML=quotes[count%maxCount]["college"]
       quoteAuther.appendChild(quoteName)
-      // quoteAuther.appendChild(quoteCollege)
       addEvent(quotebox,quoteAuther)
       quotebox.appendChild(quote)
       quotebox.appendChild(quoteAuther)
       piece.appendChild(quotebox)
       quote_boxes.push(quotebox)
       count++
-      //console.log(containerStyle.marginLeft, containerStyle.marginTop);
-    }
-console.log(quote_boxes)
+}
 function addEvent (quotebox,quoteAuther) {
   quotebox.addEventListener("mouseover",()=>{
     for(var i=0;i<quote_boxes.length;i++){
@@ -215,32 +211,6 @@ function addEvent (quotebox,quoteAuther) {
     quoteAuther.removeChild(quoteCollege)
   })
 }
-//   window.addEventListener("mousemove", function(e){
-//     var pieces = container.querySelectorAll(".collage_piece");
-//     var xpos, ypos, mouseX, mouseY, levelNum, off;
-    
-    
-//     if (!mie) {
-//         mouseX = e.pageX; 
-//         mouseY = e.pageY;
-//     }
-//     else {
-//         mouseX = event.clientX + document.body.scrollLeft;
-//         mouseY = event.clientY + document.body.scrollTop;
-//     }
-    
-//     for (var p=0, l=pieces.length; p < l ; p++)
-//       {
-//         levelNum = pieces[p].dataset.level;
-//         off = pieces[p].dataset.offset;
-//         xpos = ( -mouseX/2 + containerWidth/2) / (off - levelNum);
-//         ypos = ( -mouseY/2 + containerHeight/2) / (off - levelNum);
-//         TweenMax.set(pieces[p],  {x:xpos, y:ypos});
-//       }
-//   })
-  
-  
-  var mie = (navigator.appName == "Microsoft Internet Explorer") ? true : false;  
   function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
   }
