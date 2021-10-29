@@ -159,6 +159,7 @@ function ImageCollage(defaults)
       piece.style.left = getRandomInt(0, containerWidth-piece.offsetWidth) + "px";
       piece.style.top = getRandomInt(0, containerHeight-piece.offsetHeight) + "px";
       piece.style.backgroundPosition = -(piece.offsetLeft) + "px " + (-piece.offsetTop) + "px";
+      
       var quotebox=document.createElement("div")
       var quote=document.createElement("div")
       var quoteAuther=document.createElement("div")
