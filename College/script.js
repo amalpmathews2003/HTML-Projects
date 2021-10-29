@@ -129,7 +129,7 @@ function ImageCollage(defaults)
   var offset = 15;
   var strength = 3;
   
-  
+  quote_boxes=[]
   for (var i=0; i < piecesNum; i++)
     {
       var piece = document.createElement('div');
@@ -187,18 +187,31 @@ function ImageCollage(defaults)
       addEvent(quotebox,quoteAuther)
       quotebox.appendChild(quote)
       quotebox.appendChild(quoteAuther)
-      
       piece.appendChild(quotebox)
-      
+      quote_boxes.push(quotebox)
       count++
       //console.log(containerStyle.marginLeft, containerStyle.marginTop);
     }
+console.log(quote_boxes)
 function addEvent (quotebox,quoteAuther) {
   quotebox.addEventListener("mouseover",()=>{
-    quoteAuther.appendChild(quoteCollege)
+    for(var i=0;i<quote_boxes.length;i++){
+      if(quote_boxes[i]!=quotebox)
+        quote_boxes[i].classList.add("fade")
+      else{
+        quotebox.classList.add("hover")
+        quoteAuther.appendChild(quoteCollege)
+      }
+    }
+    
     
   })
   quotebox.addEventListener("mouseout",()=>{
+    for(var i=0;i<quote_boxes.length;i++){
+      if(quote_boxes[i]!=quotebox)
+        quote_boxes[i].classList.remove("fade")
+    }
+    quotebox.classList.remove("hover")
     quoteAuther.removeChild(quoteCollege)
   })
 }
