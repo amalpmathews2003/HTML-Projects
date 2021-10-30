@@ -119,6 +119,7 @@ button {
       margin: 5px 0 22px 0;
       border: none;
       background: #f1f1f1;
+      top: 60%;
     }
     
     /* When the inputs get focus, do something */
@@ -193,13 +194,14 @@ button {
       display: none;
     }
     .containerform {
-      display: none;
+      display: block;
       background: #fff;
       width: 450px;
       height: 75%;
       padding: 30px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       margin-top: 35px;
+      top: 170vh;
     }
     #show:checked ~ .container {
       display: block;
