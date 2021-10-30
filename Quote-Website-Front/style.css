@@ -194,7 +194,7 @@ button {
       display: none;
     }
     .containerform {
-      display: block;
+      display: none;
       background: #fff;
       width: 450px;
       height: 75%;

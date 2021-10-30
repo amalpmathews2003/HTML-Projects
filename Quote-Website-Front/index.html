@@ -88,10 +88,11 @@ rel="stylesheet"
 
 <script>
       function openForm() {
-            window.scrollTo(0,1000)
-  //document.getElementById("myForm").style.display = "block";
-  document.getElementById("myRegister").style.display = "none";
+            
+  document.getElementById("myForm").style.display = "block";
+//   document.getElementById("myRegister").style.display = "none";
 document.getElementById("myAbout").style.display = "none";
+setTimeout(window.scrollTo(0,1000),1000)
       
 }
 
@@ -102,7 +103,7 @@ function closeAbout() {
   document.getElementById("myAbout").style.display = "none";
 }
 function openAbout() {
-  document.getElementById("myRegister").style.display = "none";
+//   document.getElementById("myRegister").style.display = "none";
   document.getElementById("myForm").style.display = "none";
   document.getElementById("myAbout").style.display = "block";
 }
