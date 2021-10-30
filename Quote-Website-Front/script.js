@@ -22,7 +22,7 @@ quotes=[
     ]
     var options = {
       container:document.querySelector(".collage_container"),
-      piecesNum:30,
+      piecesNum:100,
     }
     
     var count=0,maxCount=4
@@ -50,14 +50,14 @@ quotes=[
           if(i < levelIndex){
             piece.classList += " level_1";     
             piece.dataset.level = 1;
-            piece.style.width = getRandomInt(100,  300) + "px";
-            piece.style.height = getRandomInt(40, 100) + "px";
+            // piece.style.width = getRandomInt(100,  300) + "px";
+            // piece.style.height = getRandomInt(40, 100) + "px";
             
           }else{
             piece.classList += " level_2";
             piece.dataset.level = 2;
-            piece.style.width = getRandomInt(100,  400) + "px";
-            piece.style.height = getRandomInt(40, 100) + "px";
+            // piece.style.width = getRandomInt(100,  400) + "px";
+            // piece.style.height = getRandomInt(40, 100) + "px";
           }
           container.appendChild(piece);
           

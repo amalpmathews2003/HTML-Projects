@@ -2,8 +2,8 @@
 body{
   background-color:#161719;
   text-align:center;
+  
   overflow-x:hidden;
-  justify-content: space-between;
 }
 .collage_container{
   display:inline-block;
@@ -11,6 +11,7 @@ body{
   height: 500px;
   position:relative;
   margin-top:10px;
+  margin-right: 200px;
 }
 
 .collage_piece{
@@ -29,7 +30,7 @@ body{
 }
 
 .quote-box{
-      min-width: 200px;
+  min-width: 200px;
   position: absolute;
   z-index: 1;
   color: black;
@@ -40,6 +41,7 @@ body{
   padding-top: 5px;
   border-radius:20px;
   background: #7ac059;
+  margin: 20px;
 }
 .quote-box .quote{
   font-size: 21px;
