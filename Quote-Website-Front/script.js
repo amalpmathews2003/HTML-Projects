@@ -99,7 +99,7 @@ quotes=[
       quotebox.addEventListener("mouseover",()=>{
         for(var i=0;i<quote_boxes.length;i++){
           if(quote_boxes[i]!=quotebox)
-            quote_boxes[i].classList.add("fade")
+            quote_boxes[i].classList.add("fade-out")
           else{
             quotebox.classList.add("hover")
             quoteAuther.appendChild(quoteCollege)
@@ -111,7 +111,7 @@ quotes=[
       quotebox.addEventListener("mouseout",()=>{
         for(var i=0;i<quote_boxes.length;i++){
           if(quote_boxes[i]!=quotebox)
-            quote_boxes[i].classList.remove("fade")
+            quote_boxes[i].classList.remove("fade-out")
         }
         quotebox.classList.remove("hover")
         quoteAuther.removeChild(quoteCollege)

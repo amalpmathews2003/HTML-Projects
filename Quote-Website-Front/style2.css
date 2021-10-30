@@ -63,8 +63,8 @@ body{
   transform: scale(1.5);
   z-index: 3;
 }     
-.fade{
-  filter: blur(1px);
+.fade-out{
+  /* filter: blur(1px); */
   transform: scale(.8);
   
 }
