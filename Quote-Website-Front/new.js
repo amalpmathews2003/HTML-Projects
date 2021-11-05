@@ -22,10 +22,11 @@ quotes = [
 ]
 var options = {
   container: document.querySelector(".collage_container"),
-  piecesNum: 100,
+  piecesNum: 100
+  ,
 }
 bg_colors=["#b9dcf4","#ffb19e","#CAF4B9","#F7E999"]
-var count = 0, maxCount = 4
+var count = 0, maxCount = quotes.length
 function ImageCollage(defaults) {
   var container = document.querySelector(".collage_container");
   var containerWidth = container.offsetWidth;
@@ -37,6 +38,7 @@ function ImageCollage(defaults) {
   var maxsizeY = Math.round(container.offsetHeight / 2);
   var offset = 15;
   var strength = 3;
+  colors=["note-wrap note-yellow","note-wrap note-blue","note-wrap note-pink","note-wrap note-green"]
 
   quote_boxes = []
 
@@ -65,44 +67,49 @@ function ImageCollage(defaults) {
     piece.style.top = getRandomInt(0, containerHeight - piece.offsetHeight) + "px";
     piece.style.backgroundPosition = -(piece.offsetLeft) + "px " + (-piece.offsetTop) + "px";
 
-    var quotebox = document.createElement("div")
-    var quote = document.createElement("div")
-    var quoteAuther = document.createElement("div")
-    var quoteName = document.createElement("div")
-    var quoteCollege = document.createElement("div")
-    quotebox.className = "quote-box"
-   // quotebox.style.background=bg_colors[count%bg_colors.length]
+    var quotebox=document.createElement('aside')
+      quotebox.className=colors[count%4]
+      var quote=document.createElement('p')
+      quote.innerHTML=quotes[count%maxCount]["quote"]
+      
+      var quoteAuther=document.createElement('div')
+      var quoteCollege=document.createElement('div')
+      quoteCollege.innerHTML="NITC"
+    
+      var quoteName=document.createElement('a')
+      quoteName.innerHTML=quotes[count%maxCount]["name"]
     quote.className = "quote"
     quoteAuther.className = "quote-auther"
     quoteName.className = "name"
     quoteCollege.className = "college"
-    if (i < levelIndex) {
-      quotebox.classList += " level_1"
-    }
-    else {
-      quotebox.classList += " level_2"
-    }
+    // if (i < levelIndex) {
+    //   quotebox.classList += " level_1"
+    // }
+    // else {
+    //   quotebox.classList += " level_2"
+    // }
     quote.innerHTML = quotes[count % maxCount]["quote"]
     quoteName.innerHTML = quotes[count % maxCount]["name"]
     quoteCollege.innerHTML = quotes[count % maxCount]["college"]
     quoteAuther.appendChild(quoteName)
+    quoteAuther.appendChild(quoteCollege)
     quotebox.appendChild(quote)
     quotebox.appendChild(quoteAuther)
+    
     piece.appendChild(quotebox)
-    addEvent(quotebox, quoteAuther,quoteCollege)
+    addEvent(quotebox,quoteCollege)
 
     quote_boxes.push(quotebox)
     count++
   }
-  function addEvent(quotebox, quoteAuther,quoteCollege) {
+  function addEvent(quotebox,quoteCollege) {
     quotebox.addEventListener("mouseover", () => {
       for (var i = 0; i < quote_boxes.length; i++) {
         if (quote_boxes[i] != quotebox)
           quote_boxes[i].classList.add("fade-out")
         else {
-          quoteAuther.appendChild(quoteCollege,quoteCollege)
-          quotebox.classList.add("hover")
-
+          quotebox.classList.add("hover");
+          quoteCollege.style.visibility="visible"
         }
       }
 
@@ -113,8 +120,8 @@ function ImageCollage(defaults) {
         if (quote_boxes[i] != quotebox)
           quote_boxes[i].classList.remove("fade-out")
       }
-      quotebox.classList.remove("hover")
-      quoteAuther.removeChild(quoteCollege)
+      quotebox.classList.remove("hover");
+      quoteCollege.style.visibility="hidden"
     })
   }
   function getRandomInt(min, max) {

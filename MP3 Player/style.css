@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins",sans-serif;
+}
+*::before,*::after{
+      padding: 0;
+      margin: 0;
+}
+:root{
+      --pink:#ff74a4;
+      --violet:#9f6ea3;
+      --lightblack:#515c6F;
+      --white:#ffffff;
+      --darkwhite:#cecaca;
+      --pinkshadow:#ffcbdd;
+      --lightbshadow:rgba(0,0,0,0.15);
+}
+body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+}
+.wrapper{
+      width: 380px;
+      padding: 25px 30px;
+      border-radius: 15px;
+      /* overflow: hidden; */
+      background: var(--white);
+      box-shadow: 0px 6px 15px var(--lightbshadow);
+}
+.wrapper i{
+      cursor: pointer;
+}
+.top-bar,.progress-area .timer, .controls{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+}
+.top-bar i{
+      font-size: 30px;
+      color: var(--lightblack);
+}
+.top-bar span{
+      font-size: 18px;
+      color: var(--lightblack);
+}
+.img-area{
+      height: 256px;
+      width: 100%;
+      margin-top: 25px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0px 6px 12px var(--lightbshadow);
+}
+.img-area img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+}
+.song-details{
+      text-align: center;
+      margin: 10px 0;
+}
+.song-details .name{
+      font-size: 21px;
+}
+.song-details .artist{
+      opacity: 0.9;
+      font-size: 18px;
+}
+.progress-area{
+      height: 6px;
+      width: 100%;
+      background: #f0f0f0;
+      border-radius: 50px;
+      cursor: pointer;
+}
+.progress-area .progress-bar{
+      position: relative;
+      height: inherit;
+      width: 50%;
+      border-radius: inherit;
+      background: linear-gradient(90deg,var(--pink) 0%,var(--violet) 100%);
+}
+.progress-bar::before{
+      content: "";
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      background: #000;
+      border-radius: inherit;
+      top: 50%;
+      right: -5px;
+      transform: translateY(-50%);
+      background: inherit;
+      opacity: 0;
+      transition: 0.2s ease;
+}
+.progress-area:hover .progress-bar::before{
+      opacity: 1;
+}
+.progress-area .timer{
+      margin-top: 2px;
+}
+.timer span{
+      font-size: 13px;
+      color: var(--lightblack );
+}
+.controls{
+      margin: 40px 0 5px 0;
+}
+.controls i{
+      font-size: 28px;
+      user-select: none;
+      background: linear-gradient(var(--pink) 0%,var(--violet) 100%);
+      background-clip: text;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color: transparent;
+}
+.controls i:nth-child(2),.controls i:nth-child(4){
+      font-size: 43px;
+}
+.controls #prev{
+      margin-right: -13px;
+}
+.controls #next{
+      margin-left: -13px;
+}
+.controls .play-pause{
+      height: 54px;
+      width: 54px;
+      background: linear-gradient(var(--white) 0%,var(--darkwhite 100%));
+      box-shadow: 0px 0px 5px var(--pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+.play-pause::before{
+      content: "";
+      height: 43px;
+      width: 43px;
+      border-radius: inherit; 
+      position: absolute;
+      background: linear-gradient(var(--pink) 0%,var(--violet) 100%);
+}
+.play-pause i{
+      
+      position: relative;
+ height: 43px;
+  width: 43px;
+  line-height: 43px;
+  text-align: center;
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

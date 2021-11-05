@@ -12,6 +12,7 @@ body{
   position:relative;
   margin-top:10px;
   margin-right: 200px;
+  visibility: visible;
 }
 
 .collage_piece{
@@ -49,7 +50,7 @@ body{
   font-weight: 500;
 }
 .quote-auther{
-  display: flex;
+  /* display: flex; */
 }
 .quote-auther .name{
   color: rgb(75, 30, 238);
@@ -60,16 +61,16 @@ body{
   color: red;
   /* margin: 5px 5px 2px 5px; */
   margin: auto;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
+
 .hover{
-  cursor: pointer;
-  transform: scale(1.5);
+  /* cursor: pointer; */
+  transform: scale(1.1);
   z-index: 3;
 }     
 .fade-out{
   filter: blur(1px);
   transform: scale(.8);
   font-size: 18px;
-  
 }
