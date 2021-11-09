@@ -109,7 +109,7 @@ def new_html_folder(dir):
 
 parser = argparse.ArgumentParser()      
 parser.add_argument('--newPro',type=str,help='create folder with given name')
-parser.add_argument('--folders',type=str,help='create folder with given name')
+parser.add_argument('--folders',type=str,help='list of folders')
 args=parser.parse_args()
 if(args.newPro):
       new_html_folder(args.newPro)

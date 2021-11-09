@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;500&display=swap');
 body{
   background-color:#161719;
-  text-align:center;
+  /* text-align:center; */
   
-  overflow-x:hidden;
+  /* overflow-x:hidden; */
 }
 .collage_container{
   display:inline-block;
@@ -11,7 +11,7 @@ body{
   height: 500px;
   position:relative;
   margin-top:10px;
-  margin-right: 200px;
+  margin-right: 10px;
   visibility: visible;
 }
 
@@ -21,13 +21,15 @@ body{
   box-sizing:border-box;
   /* background-repeat: no-repeat; */
   transition: transform 1s ease-in-out;
+  transform: scale(0.7);
+
 }
 .quote-box{
   overflow:hidden;
   position:absolute;
   box-sizing:border-box;
   background-repeat: no-repeat;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .quote-box{
@@ -43,15 +45,14 @@ body{
   border-radius:20px;
   background: #7ac059;
   margin: 20px;
+  transform: scale(.7);
 }
 .quote-box .quote{
-  font-size: 21px;
+  font-size: 18px;
   margin: 10px ;
   font-weight: 500;
 }
-.quote-auther{
-  /* display: flex; */
-}
+
 .quote-auther .name{
   color: rgb(75, 30, 238);
   margin-right: auto;
@@ -66,11 +67,28 @@ body{
 
 .hover{
   /* cursor: pointer; */
-  transform: scale(1.1);
-  z-index: 3;
+  transform: scale(1.2);
+  z-index: 10;
 }     
 .fade-out{
-  filter: blur(1px);
-  transform: scale(.8);
-  font-size: 18px;
+  filter: blur(2px);
+  /* transform: scale(.7); */
+  /* font-size: 15px; */
+}
+
+.size{
+  transform: 0.7;
+}
+.space_div{
+  margin-bottom: 400px;
+}
+.loadmore-btn{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+.loadmore-btn2{
+  position: fixed;
+  bottom: 10px;
+  right: 100px;
 }

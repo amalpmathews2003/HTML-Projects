@@ -43,10 +43,12 @@ body {
 
 /* Note styles */
 .note-wrap {
+	
 	border-radius: 15px;
 	min-width: 250px;
 	/* min-height: 235px; */
-	padding: 35px; 
+	padding: 15px; 
+	
 	margin: 0 22px 44px 22px;
 	position: absolute;
 	font-size: 24px;
@@ -59,7 +61,8 @@ body {
 	text-align: center;
 	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 	/* pointer-events: none; */
-	transition: transform 1s ease-in-out;
+	transition: transform 0.5s ease-in-out;
+	
 }
 .note-wrap :before  {
       display: block;
@@ -79,6 +82,7 @@ body {
       transform: rotate(-2deg);
 }
 .note-wrap  a {
+
       color:#D83A25;
       text-decoration: none;
       font-size: 20px; 
@@ -91,6 +95,7 @@ body {
 }
 
 .note-yellow {
+	transform: scale(.7);
 	background: #F7E999;
 	-webkit-transform: rotate(2deg);
 	-moz-transform: rotate(2deg);
@@ -111,6 +116,7 @@ body {
 	transform: rotate(-2deg);
 }
 .note-pink {
+	
 	background: #ffb19e;
 	-webkit-transform: rotate(1deg);
 	-moz-transform: rotate(1deg);
@@ -119,6 +125,7 @@ body {
 	transform: rotate(1deg);
 }
 .note-green {
+	
 	background: #CAF4B9;
 	-webkit-transform: rotate(-1deg);
 	-moz-transform: rotate(-1deg);
@@ -126,3 +133,9 @@ body {
 	-ms-transform: rotate(-1deg);
 	transform: rotate(-1deg);
 }
+
+.loadmore-btn{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+    }
