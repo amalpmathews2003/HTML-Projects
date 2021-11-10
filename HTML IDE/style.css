@@ -1,0 +1,12 @@
+textarea{
+      width: 600px;
+      height: 600px;
+      display: none;
+}
+
+#output{
+      margin: 40px;
+      width: 600px;
+      height: 600px;
+      border: 5px solid rgba(0, 0, 0, 0.548);
+}

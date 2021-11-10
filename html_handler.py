@@ -2,20 +2,20 @@ import os
 import time
 import argparse
 from selenium import webdriver
-from PIL import Image
 from webdriver_manager.chrome import ChromeDriverManager
 
 template="""<div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{img}"></a>
-          <h3 class="name">{name}</h3>
-          <p class="description">{desc}</p><div
-            class="d-md-flex justify-content-md-end action" style="margin-left: 140px;">
-            <a href="{github}"><i class="fa fa-github"
-              style="opacity: 1;margin: -1px;margin-left: 0px;margin-bottom: -5px;margin-right: 52px;"></i></a>
-            <a href="{page}"> <i
-              class="fa fa-arrow-circle-right" style="margin-left: 11px;"></i></a></a>
-             </div>
-      </div>
+ <h3 class="name">{name}</h3>
+ <p class="description">{desc}</p>
+ <div class="d-md-flex justify-content-md-end action" style="margin-left: 140px;">
+  <a href="{code}"><i class="fa fa-github"
+   style="opacity: 1;margin: -1px;margin-left: 0px;margin-bottom: -5px;margin-right: 52px;"></i></a>
+  <a href="{website}"> <i
+   class="fa fa-arrow-circle-right" style="margin-left: 11px;"></i></a></a>
+ </div>
+</div>
 """
+
 
 basic_html_temp="""<!DOCTYPE html>
 <html lang="en">
@@ -39,10 +39,10 @@ desc_template="""{{
 }}
 """
 
-def githubLink(filename):
+def githubCodeLink(filename):
       return f"https://github.com/amalpmathews2003/HTML-Projects/tree/master/{filename}"
 
-def pageLink(filename):
+def websiteLink(filename):
       return f"https://amalpmathews2003.github.io/HTML-Projects/{filename}"
 
 def makeUrl(filename):
@@ -51,7 +51,7 @@ def makeUrl(filename):
 def initialDriver():
       #path=ChromeDriverManager().install()
       driver=webdriver.Chrome(r"C:\Users\amalp\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe")
-      driver.switch_to_alert().accept()
+      #driver.switch_to_alert().accept()
       return driver
 
 def closeDriver(driver):
@@ -60,8 +60,6 @@ def closeDriver(driver):
 def takeScreenshot(filename,driver):
       driver.get(makeUrl(filename))
       driver.save_screenshot(f"images/{filename}.png")
-      
-
 def getListedDirs():
       with open("indexed_pages.txt",'r') as f:
             indexedDirs=eval(f.read())
@@ -69,13 +67,39 @@ def getListedDirs():
 def updateListedDirs(dirs):
       with open("indexed_pages.txt",'w') as f:
             f.write(f"{dirs}")
-      
-
 def getDirs():
       thedir=os.getcwd()
-      dirs=[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
-      for dir in dirs:
-            print(dir)
+      dirs=[name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
+      return dirs
+
+def getUnlistedDirs():
+      dirs=getDirs()
+      listdirs=getListedDirs()
+      return [i for i in dirs+listdirs if i not in dirs or i not in listdirs ]
+
+def getImagePath(dir):
+      return f"images/{dir}.png"
+def getProjectInfo(dir):
+      info={"name":"","desc":"","website":"","code":"","image":""}
+      info["name"]=dir
+      info["desc"]="No description untill now"
+      info["website"]=websiteLink(dir)
+      info["code"]= githubCodeLink(dir)
+      info["image"]=getImagePath(dir)
+      return info
+
+def generateTemplate(dir):
+      info=getProjectInfo(dir)
+      return template.format(name=info["name"],desc=info["desc"]
+      ,img=info["image"],code=info["code"],website=info["website"])
+      
+def printGeneratedTemplate(template):
+      with open("temp.html","a+") as f:
+            f.write(f"{template}\n")
+
+def toHtml(dir):
+      printGeneratedTemplate(getProjectInfo(dir))
+      return
 
 def indexFiles():
       driver=initialDriver()
@@ -86,12 +110,18 @@ def indexFiles():
             if dir not in indexedDirs:
                   if(not os.path.isfile(f'{dir}/index.html')):
                         continue
-                  takeScreenshot(dir,driver)
-            indexedDirs.append(dir)
-            updateListedDirs(indexedDirs)
+                  try:
+                        takeScreenshot(dir,driver)
+                        toHtml(dir)
+                        indexedDirs.append(dir)
+
+                  except Exception as e :
+                        print(e,dir)
+
+      updateListedDirs(indexedDirs)
       closeDriver(driver)
 
-#indexFiles()
+
 def new_html_folder(dir):
       parent_dir=os.getcwd()
       os.mkdir(dir)
@@ -107,9 +137,14 @@ def new_html_folder(dir):
       print(f'{dir} created with index.html,style.css,script.js and desc.txt')
 
 
-parser = argparse.ArgumentParser()      
-parser.add_argument('--newPro',type=str,help='create folder with given name')
-parser.add_argument('--folders',type=str,help='list of folders')
-args=parser.parse_args()
-if(args.newPro):
-      new_html_folder(args.newPro)
+
+
+if __name__=="__main__":
+      parser = argparse.ArgumentParser()      
+      parser.add_argument('--newPro',type=str,help='create folder with given name')
+      parser.add_argument('--folders',type=str,help='list of folders')
+      args=parser.parse_args()
+      if(args.newPro):
+            new_html_folder(args.newPro)
+
+      #indexFiles()

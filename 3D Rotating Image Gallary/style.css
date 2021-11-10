@@ -7,13 +7,11 @@ body{
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      /* min-height: 100vh; */
       background: #000;
 }
 .box{
-      position: relative;
-      width: 200px;
-      height: 200px;
+      position: relative;1444444444444444kkkii566666666666666klllll111111111111111111111111111111111111111111111111111111111111555ssssdc1                         -oi56
       transform-style: preserve-3d;
       animation: animate 20s linear infinite;
 
@@ -29,18 +27,18 @@ body{
 .box span{
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      left: 0;-555555555555555555555555
+      width: 50%;
+      height: 50%;
       transform-origin: center;
       transform-style: preserve-3d;
       transform:rotateY(calc(var(--i)*45deg)) translateZ(400px);
       -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#004);
 }
 .box span aside{
-      width: 300px;
+      width: 100px;
       height: 200px;
 }
 /* .box span aside :hover{
      animation-play-state: paused;
-} */
+} */ 

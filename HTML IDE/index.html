@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Html Ide</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<body>
+
+<div style="display: flex;">
+      <div>
+            <div class="w3-bar w3-black" style="width: 600px;">
+                  <button class="w3-bar-item w3-button tablink w3-red" onclick="openTab(event,'Html')">Html</button>
+                  <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Js')">Javascript</button>
+                  <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Css')">Css</button>
+            </div>
+            <textarea id="Html"class="w3-container code" autofocus style="display: block;" placeholder="Html"></textarea>
+            <textarea id="Js" class="w3-container code" placeholder="Javascript"></textarea>
+            <textarea id="Css" class="w3-container code" placeholder="Css"></textarea>
+      </div>
+      <div id="output"></div>
+</div>
+</body>
+<script src="script.js"></script>  
+</html>
