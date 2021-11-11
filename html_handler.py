@@ -1,5 +1,4 @@
 import os
-import time
 import argparse
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -39,6 +38,10 @@ desc_template="""{{
 }}
 """
 
+def printList(list):
+      for i in list:
+            print(i)
+
 def githubCodeLink(filename):
       return f"https://github.com/amalpmathews2003/HTML-Projects/tree/master/{filename}"
 
@@ -69,11 +72,17 @@ def updateListedDirs(dirs):
             f.write(f"{dirs}")
 def getDirs():
       thedir=os.getcwd()
-      dirs=[name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
+      dirs=[name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name))  ]
       return dirs
 
-def getUnlistedDirs():
+def getProjects():
       dirs=getDirs()
+      for dir in dirs:
+            if(not os.path.isfile(f'{dir}/index.html')):
+                        dirs.remove(dir)
+      return dirs
+def getUnlistedDirs():
+      dirs=getProjects()
       listdirs=getListedDirs()
       return [i for i in dirs+listdirs if i not in dirs or i not in listdirs ]
 
@@ -98,18 +107,16 @@ def printGeneratedTemplate(template):
             f.write(f"{template}\n")
 
 def toHtml(dir):
-      printGeneratedTemplate(getProjectInfo(dir))
+      printGeneratedTemplate(generateTemplate(dir))
       return
 
 def indexFiles():
       driver=initialDriver()
-      thedir=os.getcwd()
-      dirs=[ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
+      dirs=getProjects()
       indexedDirs=getListedDirs()
       for dir in dirs:
             if dir not in indexedDirs:
-                  if(not os.path.isfile(f'{dir}/index.html')):
-                        continue
+                  
                   try:
                         takeScreenshot(dir,driver)
                         toHtml(dir)
@@ -122,7 +129,7 @@ def indexFiles():
       closeDriver(driver)
 
 
-def new_html_folder(dir):
+def newHtmlProject(dir):
       parent_dir=os.getcwd()
       os.mkdir(dir)
       with open(f"{dir}/index.html","w") as f:
@@ -142,9 +149,20 @@ def new_html_folder(dir):
 if __name__=="__main__":
       parser = argparse.ArgumentParser()      
       parser.add_argument('--newPro',type=str,help='create folder with given name')
-      parser.add_argument('--folders',type=str,help='list of folders')
+      parser.add_argument('--allPro',help='list of all folders',action='store_true', dest='allPro')
+      parser.add_argument('--liPro',help='list of all folders',action='store_true', dest='liPro')
+      parser.add_argument('--unliPro',help='list of all folders',action='store_true', dest='unliPro')
+      parser.add_argument('--indexAll',help='list of all folders',action='store_true', dest='indexAll')
+      parser.add_argument('--genTemp',help='list of all folders',action='store_true', dest='genTemp')
       args=parser.parse_args()
       if(args.newPro):
-            new_html_folder(args.newPro)
-
-      #indexFiles()
+            newHtmlProject(args.newPro)
+      if(args.allPro):
+            printList(getProjects())
+      if(args.liPro):
+            printList(getListedDirs())
+      if(args.unliPro):
+            printList(getUnlistedDirs())
+      if(args.indexAll):
+            indexFiles()
+            
