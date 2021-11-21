@@ -92,3 +92,17 @@ body{
   bottom: 10px;
   right: 100px;
 }
+
+.modal .nav {
+  transform: translate(50vw,20vh);
+
+}
+.modal-content{
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal.fade:not(.in) .modal-dialog {
+	transform: translate(-10vw,0);
+  
+}

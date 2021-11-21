@@ -3,7 +3,7 @@ import argparse
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-template="""<div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{img}"></a>
+template="""<div class="col-sm-6 col-md-4 item"><a href="{website}"><img class="img-fluid" src="{img}"></a>
  <h3 class="name">{name}</h3>
  <p class="description">{desc}</p>
  <div class="d-md-flex justify-content-md-end action" style="margin-left: 140px;">
@@ -37,7 +37,12 @@ desc_template="""{{
       Desc:
 }}
 """
-
+css_template="""@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+*{
+      padding: 0;
+      margin: 0;
+}
+"""
 def printList(list):
       for i in list:
             print(i)
@@ -135,6 +140,7 @@ def newHtmlProject(dir):
       with open(f"{dir}/index.html","w") as f:
             f.write(basic_html_temp.format(name=dir.capitalize()))
       f=open(f"{dir}/style.css","w")
+      f.write(css_template)
       f.close()
       f=open(f"{dir}/script.js","w")
       f.close()

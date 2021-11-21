@@ -1,4 +1,4 @@
-template="<div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="images/Api testing tool.png"></a>
+template=`<div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="images/Api testing tool.png"></a>
 <h3 class="name">Api testing tool</h3>
 <p class="description">No description untill now</p>
 <div class="d-md-flex justify-content-md-end action" style="margin-left: 140px;">
@@ -7,5 +7,5 @@ template="<div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid"
  <a href="https://amalpmathews2003.github.io/HTML-Projects/Api testing tool"> <i
   class="fa fa-arrow-circle-right" style="margin-left: 11px;"></i></a></a>
 </div>
-</div>"
+</div>`
 

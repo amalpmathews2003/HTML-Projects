@@ -1,3 +1,13 @@
+.modal-content button{
+	margin: 5px;
+}
+.modal-content button a{
+	text-decoration: blink;
+}
+.modal.fade:not(.in) .modal-dialog {
+	-webkit-transform: translate3d(-25%, 0, 0);
+	transform: translate3d(-25%, 0, 0);
+}
 
 * {
 	-webkit-box-sizing: border-box; 

@@ -16,6 +16,8 @@ button {
       justify-content: space-between;
       align-items: center;
       background-color: black;
+      /* background-color: transparent; */
+      opacity: 0.56;
       color: white;
     }
     .brand-title {
