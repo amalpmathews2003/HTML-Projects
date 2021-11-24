@@ -1,21 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Captcha</title>
-      <link rel="stylesheet" href="style.css">
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-</head>
-<body>
-      <form action="" method="POST">
-            <div class="g-recaptcha" data-sitekey="6LeovFYdAAAAAKWe9h9AyPQ-O6IgZP9icMe946zI"></div>
-            <br/>
-            <input type="submit" value="Submit">
-          </form>
-
-</body>
-<script src="script.js"></script>  
+<html>
+  <head>
+    <title>reCAPTCHA demo: Explicit render for multiple widgets</title>
+    <script type="text/javascript">
+      var verifyCallback = function(response) {
+        alert(response);
+      };
+      var widgetId1;
+      var widgetId2;
+      var onloadCallback = function() {
+        // Renders the HTML element with id 'example1' as a reCAPTCHA widget.
+        // The id of the reCAPTCHA widget is assigned to 'widgetId1'.
+        widgetId1 = grecaptcha.render('example1', {
+          'sitekey' : '6LeovFYdAAAAAKWe9h9AyPQ-O6IgZP9icMe946zI',
+          'theme' : 'light'
+        });
+        widgetId2 = grecaptcha.render(document.getElementById('example2'), {
+          'sitekey' : '6LeovFYdAAAAAKWe9h9AyPQ-O6IgZP9icMe946zI'
+        });
+        grecaptcha.render('example3', {
+          'sitekey' : '6LeovFYdAAAAAKWe9h9AyPQ-O6IgZP9icMe946zI',
+          'callback' : verifyCallback,
+          'theme' : 'dark'
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <!-- The g-recaptcha-response string displays in an alert message upon submit. -->
+    <form action="javascript:alert(grecaptcha.getResponse(widgetId1));">
+      <div id="example1"></div>
+      <br>
+      <input type="submit" value="getResponse">
+    </form>
+    <br>
+    <!-- Resets reCAPTCHA widgetId2 upon submit. -->
+    <form action="javascript:grecaptcha.reset(widgetId2);">
+      <div id="example2"></div>
+      <br>
+      <input type="submit" value="reset">
+    </form>
+    <br>
+    <!-- POSTs back to the page's URL upon submit with a g-recaptcha-response POST parameter. -->
+    <form action="https://github.com/amalpmathews2003/HTML-Projects" method="POST">
+      <div id="example3"></div>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
+  </body>
 </html>
