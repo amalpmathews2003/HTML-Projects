@@ -1,4 +1,6 @@
-
+body{
+  background-color:black;
+}
 /*Carousel Gallery*/
 .carousel-gallery {
   margin: 50px 0;
