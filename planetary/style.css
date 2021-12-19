@@ -1,0 +1,189 @@
+/*The Orbital Spin*/
+ @-moz-keyframes circle { 
+    from {
+        -moz-transform:rotate(360deg);
+    }
+    to {
+        -moz-transform:rotate(0deg);
+    }
+}
+@-o-keyframes circle {
+    from {
+        -o-transform:rotate(360deg);
+    }
+    to {
+        -o-transform:rotate(0deg);
+    }
+}
+@-webkit-keyframes circle {
+    from {
+        -webkit-transform:rotate(360deg);
+    }
+    to {
+        -webkit-transform:rotate(0deg);
+    }
+}
+@keyframes circle {
+    from {
+        transform:rotate(360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}
+@-moz-keyframes inner-circle {
+    from {
+        -moz-transform:rotate(-360deg);
+    }
+    to {
+        -moz-transform:rotate(0deg);
+    }
+}
+@-webkit-keyframes inner-circle {
+    from {
+        -webkit-transform:rotate(-360deg);
+    }
+    to {
+        -webkit-transform:rotate(0deg);
+    }
+}
+@-o-keyframes inner-circle {
+    from {
+        -o-transform:rotate(-360deg);
+    }
+    to {
+        -o-transform:rotate(0deg);
+    }
+}
+@keyframes inner-circle {
+    from {
+        transform:rotate(-360deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}
+
+
+
+
+#rotator {
+    width:350px;
+    height:350px;
+    margin:0 auto;
+    font-size:10px;
+    line-height:1;
+    -moz-animation: circle 60s linear infinite;
+    -webkit-animation:circle 60s linear infinite;
+    -o-animation: circle 60s linear infinite;
+    animation: circle 60s linear infinite;
+    transform-origin: 50% 50%;
+    border: 1px dotted #ffff00;
+    /*Borders visible to view mechanics*/
+    border-radius: 2px;
+    /*Remove this*/
+    background: rgba(0, 42, 255, 0.1);
+    /*Remove this*/
+}
+/*
+#rotator:hover {
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}*/
+#rotator > div {
+    -moz-animation: inner-circle 60s linear infinite;
+    -o-animation: inner-circle 60s linear infinite;
+    -webkit-animation: inner-circle 60s linear infinite;
+    animation: inner-circle 60s linear infinite;
+    background-color:#e1e1e1;
+    width:50px;
+    height:50px;
+    border-radius: 100%;
+    text-rendering: geometricPrecision;
+}
+/*#rotator:hover > div {
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}*/
+
+.spin-container {
+    position: relative;
+    height: 350px;
+    width: 350px;
+    overflow: visible;
+    margin: 10% auto;
+    border: 1px dotted #f00;
+    /*Borders visible to view mechanics*/
+    border-radius: 2px;
+    /*Remove this*/
+    background: rgba(255, 0, 0, 0.1);
+    /*Remove this*/
+}
+.central-circle {
+    display: table;
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    left: 100px;
+    top: 100px;
+    background-color: #0ac900;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+/* The outer limits*/
+
+.small-circle {
+    display: table;
+    border: solid rgba(61, 61, 61, 0.28) 1px;
+    box-shadow: 2px 2px 6px #2C2D2E;
+    background: -webkit-radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
+    background: -moz-radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
+    background: radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
+
+    transition: all 1s ease;
+}
+.small-circle a {
+    color: #f00;
+    text-decoration: none;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    /* border: 1px dotted #4f8ef9; */
+    /*Borders visible to view mechanics*/
+    border-radius: 2px;
+    /*Remove this*/
+}
+.words {
+    position: relative;
+    z-index: 999;
+}
+/*The Following is just fluff, ignore or delete it as desired*/
+ body {
+    background: #494949;
+ }
+
+
+.inner i{
+    margin-top: 11px;
+    font-size: x-large;
+}
+.inner .desc{
+    margin-top: 20px;
+    font-size: x-large;
+}
+
+.active{
+    -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+
+}
