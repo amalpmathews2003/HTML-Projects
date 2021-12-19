@@ -76,7 +76,7 @@
     -moz-animation: circle 60s linear infinite;
     -webkit-animation:circle 60s linear infinite;
     -o-animation: circle 60s linear infinite;
-    animation: circle 60s linear infinite;
+    animation: circle  60s linear infinite;
     transform-origin: 50% 50%;
     border: 1px dotted #ffff00;
     /*Borders visible to view mechanics*/
@@ -92,17 +92,7 @@
     -webkit-animation-play-state: paused;
     animation-play-state: paused;
 }*/
-#rotator > div {
-    -moz-animation: inner-circle 60s linear infinite;
-    -o-animation: inner-circle 60s linear infinite;
-    -webkit-animation: inner-circle 60s linear infinite;
-    animation: inner-circle 60s linear infinite;
-    background-color:#e1e1e1;
-    width:50px;
-    height:50px;
-    border-radius: 100%;
-    text-rendering: geometricPrecision;
-}
+
 /*#rotator:hover > div {
     -moz-animation-play-state: paused;
     -o-animation-play-state: paused;
@@ -115,7 +105,7 @@
     height: 350px;
     width: 350px;
     overflow: visible;
-    margin: 10% auto;
+    margin: 20% auto;
     border: 1px dotted #f00;
     /*Borders visible to view mechanics*/
     border-radius: 2px;
@@ -124,7 +114,6 @@
     /*Remove this*/
 }
 .central-circle {
-    display: table;
     position: absolute;
     border-radius: 50%;
     width: 150px;
@@ -147,19 +136,42 @@
     background: -webkit-radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
     background: -moz-radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
     background: radial-gradient(100px 100px, circle, #BBB, #D8D8D8);
+    -moz-animation: inner-circle 60s linear infinite;
+    -o-animation: inner-circle 60s linear infinite;
+    -webkit-animation: inner-circle 60s linear infinite;
+    animation: inner-circle 60s linear infinite;
+    background-color:#e1e1e1;
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    text-rendering: geometricPrecision;
+
 
     transition: all 1s ease;
 }
-.small-circle a {
-    color: #f00;
-    text-decoration: none;
-    display: table-cell;
+.small-circle .details {
+    /* display: none; */
+    visibility: hidden;
+    pointer-events: none;
+    align-content: center;
     text-align: center;
-    vertical-align: middle;
-    /* border: 1px dotted #4f8ef9; */
-    /*Borders visible to view mechanics*/
-    border-radius: 2px;
-    /*Remove this*/
+    padding-top: 15px;
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+.details .logo{
+    display: block;
+    visibility: visible;
+}
+.little-circle{
+    display: table;
+    border: solid rgba(189, 32, 32, 0.856) 1.5px;
+    /* background-color: #f00; */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
 }
 .words {
     position: relative;
@@ -181,9 +193,47 @@
 }
 
 .active{
-    -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
+    width: 130px;
+    height: 130px;
+    transition: width height 2s;
+    text-align: center;
+    align-items: center;
+}
+.details-active{
+    
+    /* display: block; */
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s,opacity 0.5s linear;
+    transition-delay: visibility 0.5 ;
+
+    /* padding: 0px 5px 10px 10px; */
+    text-align: center;
+    align-items: center;
+}
+
+@-webkit-keyframes shake {
+    0%  { -webkit-transform:     translate(2px, 1px) rotate(0deg); }
+    10% { -webkit-transform:     translate(-1px, -2px) rotate(-2deg); }
+    20% { -webkit-transform:     translate(-3px, 0px) rotate(3deg); }
+    30% { -webkit-transform:     translate(0px, 2px) rotate(0deg); }
+    40% { -webkit-transform:     translate(1px, -1px) rotate(1deg); }
+    50% { -webkit-transform:     translate(-1px, 2px) rotate(-1deg); }
+    60% { -webkit-transform:     translate(-3px, 1px) rotate(0deg); }
+    70% { -webkit-transform:     translate(2px, 1px) rotate(-2deg); }
+    80% { -webkit-transform:     translate(-1px, -1px) rotate(4deg); }
+    90% { -webkit-transform:     translate(2px, 2px) rotate(0deg); }
+    100%{ -webkit-transform:     translate(1px, -2px) rotate(-1deg); }
+   }
+  
+
+.shake {
+    
+    -webkit-animation-name:              shake;    
+    -webkit-animation-duration:          2s;
+    -webkit-animation-iteration-count:   infinite;
+    -webkit-animation-timing-function:   linear;
+    -webkit-transform-origin:            50% 100%;
 
 }
+
