@@ -1,6 +1,8 @@
-var prevActive
-var prevActivePosition
+var prevActive;
+var prevActivePosition;
 
+let z=0;
+let initialPos=[];
 
 
 (function ($) {
@@ -18,7 +20,7 @@ var prevActivePosition
         elem.style.top = y + 'px';
         var rot = 90 + (i * (360 / block.length));
         angle += increase;
-
+        initialPos.push({"left":x+"px","top":y+"px"})
     }
 })(jQuery);
 
@@ -53,11 +55,13 @@ $(".small-circle").click((e)=>{
 
   //  var newPos=$("#addtothis").position()
     if(prevActive){
-         prevActive.css({"left":prevActivePosition.left,"top":prevActivePosition.top})
-        $("rotater").append(prevActive)
+        
+         prevActive.css({"left":initialPos[z%8].left,"top":initialPos[z%8].top})
+         z++;
      }
      
      
+
 
     prevActive=small
     prevActivePosition=small.position() 
@@ -69,3 +73,4 @@ $(".small-circle").click((e)=>{
 
 
 })
+
